@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKABDXB - Number to QR Code Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #qr-code {
+            margin-top: 20px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>AKABDXB - Number to QR Code</h1>
+    <input type="number" id="number-input" placeholder="Enter a number">
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <div id="qr-code"></div>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        function generateQRCode() {
+            const number = document.getElementById('number-input').value;
+            if (number) {
+                document.getElementById('qr-code').innerHTML = '';
+                new QRCode(document.getElementById('qr-code'), {
+                    text: number,
+                    width: 128,
+                    height: 128
+                });
+            } else {
+                alert('Please enter a number.');
+            }
+        }
+    </script>
+</body>
+</html>
